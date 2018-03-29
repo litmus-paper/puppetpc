@@ -36,8 +36,7 @@ mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
   <tr>
     <td valign="top">
 		<textarea id="textarea_processing" style="width: 640px; height: 400px; z-index: auto; position: relative; line-height: 24px; font-size: 16px; transition: none; background-color: lightyellow;">
-size(640,400);
-ellipse(320, 200, 300, 300);
+no-script
 		</textarea>
 		<br>
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -84,6 +83,16 @@ function process_this() {
     process_run =  new Processing(canvas, script_text);
   }
 }
+	
+$(document).ready(function(){
+  $('#textarea_processing').val( $('#'+getParamValue('param2')).text() );
+//  var url;//You can get this url dynamically from an ajax request or from a form etc
+  
+  // To Do : A function to populate url with a valid url from any method you prefer.
+ 
+  // Set an ID for the iframe. Let us give that an id of myframe
+//  $('#myframe').attr("src", url);
+})
 
 function run_sample(id) {
   if (id) {
@@ -95,6 +104,11 @@ function run_sample(id) {
   process_this();
 }
 
-</script></body>
+</script>
+
+<script type="application/processing" id="000a">size(640, 400);
+</script>
+
+ </body>
 
 </html>
