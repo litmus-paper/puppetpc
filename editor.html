@@ -5,7 +5,18 @@
   <title>Title of the document</title>
   <script type="text/javascript" src="https://cdn.rawgit.com/litmus-paper/puppetpc/master/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/litmus-paper/puppetpc/master/processing.min.js"></script>
-  <link rel="import" href="https://cdn.rawgit.com/litmus-paper/puppetpc/master/lessons.html">
+
+<!-- EXAMPLES -->	
+<script type="application/processing" id="000a"></script>
+
+<script type="application/processing" id="001a">size(640,400);
+ellipse(320, 200, 300, 300);</script>
+
+<script type="application/processing" id="001b">size(640,400);
+ellipse(320, 200, 300, 300);
+ellipse(250, 150, 30, 30);
+ellipse(320 - 250 + 320, 150, 30, 30);
+ellipse(320, 270, 90, 40);</script>
   
   <!-- start Mixpanel -->
 	<script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
@@ -59,8 +70,8 @@ no-script
 <script>
 	// Debug
 	document.write(Date() + "<br>");
-	document.write("document.referrer: " + document.referrer + "<br>");
-	document.write("window.parent: " + window.parent + "<br>");
+	document.write("document.referrer: " + document.referrer.join + "<br>");
+	document.write("window.parent: " + window.parent.join + "<br>");
 	document.write("window.parent.location: " + window.parent.location + "<br>");
 	document.write("param1: " + getParamValue('param1') + "<br>");
 </script>
