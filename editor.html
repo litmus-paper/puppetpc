@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Title of the document</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/processing-js/processing-js/v1.4.8/processing.min.js"></script>
+</head>
+
+<body>
+<table style="width:100%">
+  <tr>
+    <td valign="top">
+		<textarea id="textarea_processing" style="width: 640px; height: 400px; z-index: auto; position: relative; line-height: 24px; font-size: 16px; transition: none; background-color: lightyellow;">
+size(640,400);
+ellipse(320, 200, 300, 300);
+		</textarea>
+		<br>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<input type="button" class="w3-btn w3-green w3-round-xxlarge" value="Run" onclick="process_this()">
+		<input type="button" class="w3-btn w3-red w3-round-xxlarge" value="Stop" onclick="
+			  if (typeof process_run == &#39;object&#39;) {
+				process_run.exit();
+			  }
+			  this.disabled=true;
+			" id="stop_button">
+	</td>
+    <td valign="top">
+		<canvas id="canvas1" style="border: 0px solid black;" tabindex="0" width="640" height="400"></canvas>
+	</td>
+  </tr>
+</table>						
+
+<script>
+$ = jQuery;
+process_run = '';
+
+function process_this() {
+  document.getElementById('stop_button').disabled=false;
+  if (typeof process_run == 'object') {
+    process_run.exit();
+  }
+  var script_text = $('#textarea_processing').val();
+  var canvas=document.getElementById('canvas1');
+  if (process_run) {
+    process_run.exit();
+  }
+  if (script_text) {
+    process_run =  new Processing(canvas, script_text);
+  }
+}
+
+function run_sample(id) {
+  if (id) {
+    set_hash(id);
+  } else {
+    id = 'lesson-000'; // will run default demo
+  }
+  $('#textarea_processing').val( $('#'+id).text() );
+  process_this();
+}
+
+</script></body>
+
+</html>
