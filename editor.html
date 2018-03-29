@@ -25,21 +25,23 @@ for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElemen
 mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
   <!-- end Mixpanel -->
   <script type="text/javascript">
-	  mixpanel.track("Editor Loaded",{"src":window.parent.location});
+
+    <!-- SRC: https://stackoverflow.com/a/28296334 -->
+    function getParamValue(paramName)
+    {
+        var url = window.location.search.substring(1); //get rid of "?" in querystring
+        var qArray = url.split('&'); //get key-value pairs
+        for (var i = 0; i < qArray.length; i++) 
+        {
+            var pArr = qArray[i].split('='); //split key and value
+            if (pArr[0] == paramName) 
+                return pArr[1]; //return value
+        }
+    }
+
+    mixpanel.track("Editor Loaded",{"lesson":getParamValue('lesson')});
     mixpanel.time_event("Run pushed");
-  
-  <!-- SRC: https://stackoverflow.com/a/28296334 -->
-  function getParamValue(paramName)
-  {
-      var url = window.location.search.substring(1); //get rid of "?" in querystring
-      var qArray = url.split('&'); //get key-value pairs
-      for (var i = 0; i < qArray.length; i++) 
-      {
-          var pArr = qArray[i].split('='); //split key and value
-          if (pArr[0] == paramName) 
-              return pArr[1]; //return value
-      }
-  }
+
   </script>
 
 </head>
@@ -69,11 +71,11 @@ no-script
 
 <script>
 	// Debug
-	document.write(Date() + "<br>");
-	document.write("document.referrer: " + document.referrer.join + "<br>");
-	document.write("window.parent: " + window.parent.join + "<br>");
-	document.write("window.parent.location: " + window.parent.location + "<br>");
-	document.write("param1: " + getParamValue('param1') + "<br>");
+	//document.write(Date() + "<br>");
+	//document.write("document.referrer: " + document.referrer.join + "<br>");
+	//document.write("window.parent: " + window.parent.join + "<br>");
+	//document.write("window.parent.location: " + window.parent.location + "<br>");
+	//document.write("param1: " + getParamValue('param1') + "<br>");
 </script>
 
 
@@ -84,6 +86,7 @@ process_run = '';
 function process_this() {
   document.getElementById('stop_button').disabled=false;
   mixpanel.track("Run pushed");
+  mixpanel.time_event("Run pushed");
   if (typeof process_run == 'object') {
     process_run.exit();
   }
@@ -102,14 +105,14 @@ $(document).ready(function(){
 
 })
 
-function run_sample(id) {
-  if (id) {
-    set_hash(id);
-  } else {
-    id = 'lesson-000'; // will run default demo
-  }
-  $('#textarea_processing').val( $('#'+id).text() );
-  process_this();
+//function run_sample(id) {
+//  if (id) {
+//    set_hash(id);
+//  } else {
+//    id = 'lesson-000'; // will run default demo
+//  }
+//  $('#textarea_processing').val( $('#'+id).text() );
+//  process_this();
 }
 
 </script>
