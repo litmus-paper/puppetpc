@@ -14,7 +14,21 @@ mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
   <script type="text/javascript">
 	  mixpanel.track("Editor Loaded",{"src":window.parent.location});
     mixpanel.time_event("Run pushed");
+  
+  <!-- SRC: https://stackoverflow.com/a/28296334 -->
+  function getParamValue(paramName)
+  {
+      var url = window.location.search.substring(1); //get rid of "?" in querystring
+      var qArray = url.split('&'); //get key-value pairs
+      for (var i = 0; i < qArray.length; i++) 
+      {
+          var pArr = qArray[i].split('='); //split key and value
+          if (pArr[0] == paramName) 
+              return pArr[1]; //return value
+      }
+  }
   </script>
+
 </head>
 
 <body>
@@ -50,20 +64,6 @@ ellipse(320, 200, 300, 300);
 	document.write("param1: " + getParamValue('param1') + "<br>");
 </script>
 
-<!-- SRC: https://stackoverflow.com/a/28296334 -->
-<script>
-function getParamValue(paramName)
-{
-    var url = window.location.search.substring(1); //get rid of "?" in querystring
-    var qArray = url.split('&'); //get key-value pairs
-    for (var i = 0; i < qArray.length; i++) 
-    {
-        var pArr = qArray[i].split('='); //split key and value
-        if (pArr[0] == paramName) 
-            return pArr[1]; //return value
-    }
-}
-</script>
 
 <script>
 $ = jQuery;
