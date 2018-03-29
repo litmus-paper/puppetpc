@@ -12,7 +12,7 @@ for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElemen
 mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
   <!-- end Mixpanel -->
   <script type="text/javascript">
-	  mixpanel.track("Editor Loaded",{"src":document.referrer});
+	  mixpanel.track("Editor Loaded",{"src":window.parent.location});
     mixpanel.time_event("Run pushed");
   </script>
 </head>
@@ -40,9 +40,15 @@ ellipse(320, 200, 300, 300);
 	</td>
   </tr>
 </table>						
+
 <script>
-	document.referrer;
+	// Debug
+	document.write(Date()+"<br>");
+	document.write("document.referrer: " + document.referrer+"<br>");
+	document.write("window.parent: " + window.parent+"<br>");
+	document.write("window.parent.location: " + window.parent.location+"<br>");
 </script>
+
 
 <script>
 $ = jQuery;
