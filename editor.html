@@ -14,7 +14,7 @@ ellipse(320, 200, 300, 300);</script>
 
 <script type="application/processing" id="001b">size(640,400);
 ellipse(320, 200, 300, 300);
-ellipse(250 + 70, 150, 30, 30);
+ellipse(320 + 70, 150, 30, 30);
 ellipse(320 - 70, 150, 30, 30);
 ellipse(320, 270, 90, 40);</script>
   
@@ -39,7 +39,7 @@ mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
         }
     }
 
-    mixpanel.track("Editor Loaded",{"lesson":getParamValue('lesson')});
+    mixpanel.track("Editor Loaded",{"lesson":getParamValue('lesson').text()});
     mixpanel.time_event("Run pushed");
 
   </script>
@@ -85,7 +85,7 @@ process_run = '';
 
 function process_this() {
   document.getElementById('stop_button').disabled=false;
-  mixpanel.track("Run pushed");
+  mixpanel.track("Run pushed",{"lesson":getParamValue('lesson').text()});
   mixpanel.time_event("Run pushed");
   if (typeof process_run == 'object') {
     process_run.exit();
