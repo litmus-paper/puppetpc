@@ -39,7 +39,7 @@ mixpanel.init("dc2ccac7ca3dbd54b38d623ef8e0136a");</script>
         }
     }
 
-    mixpanel.track("Editor Loaded",{"lesson":getParamValue('lesson').text()});
+    mixpanel.track("Editor Loaded",{"lesson" : "#" + getParamValue('lesson')});
     mixpanel.time_event("Run pushed");
 
   </script>
@@ -85,7 +85,7 @@ process_run = '';
 
 function process_this() {
   document.getElementById('stop_button').disabled=false;
-  mixpanel.track("Run pushed",{"lesson":getParamValue('lesson').text()});
+  mixpanel.track("Run pushed",{"lesson" : "#" + getParamValue('lesson')});
   mixpanel.time_event("Run pushed");
   if (typeof process_run == 'object') {
     process_run.exit();
@@ -104,16 +104,6 @@ $(document).ready(function(){
   $('#textarea_processing').val( $('#'+getParamValue('lesson')).text() );
 
 })
-
-//function run_sample(id) {
-//  if (id) {
-//    set_hash(id);
-//  } else {
-//    id = 'lesson-000'; // will run default demo
-//  }
-//  $('#textarea_processing').val( $('#'+id).text() );
-//  process_this();
-//}
 
 </script>
 
