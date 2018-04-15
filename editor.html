@@ -95,6 +95,9 @@ no-script
 	</td>
     <td valign="top">
 		<canvas id="canvas1" style="border: 0px solid black;" tabindex="0" width="640" height="400"></canvas>
+    <div id="errordiv" align="center" style="margin-left: auto; margin-right: auto;"> 
+      <span id="errorMessage" style="color: red; display: none"></span>
+    </div>
 	</td>
   </tr>
 </table>						
@@ -126,7 +129,18 @@ function process_this() {
     process_run.exit();
   }
   if (script_text) {
-    process_run =  new Processing(canvas, script_text);
+    let errorElement = document.getElementById("errorMessage");
+    try {
+      process_run =  new Processing(canvas, script_text);
+      errorElement.style.display = 'none';
+    }
+    catch(err) {
+		  canvas.style="border: 0px solid black";
+		  canvas.width="640";
+		  canvas.height="200";
+      errorElement.innerHTML = err;
+      errorElement.style.display = 'block';
+    }
   }
 }
 	
